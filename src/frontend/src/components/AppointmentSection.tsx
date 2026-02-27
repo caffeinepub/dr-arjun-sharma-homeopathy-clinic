@@ -24,10 +24,10 @@ interface FormState {
 }
 
 const TIME_SLOTS = [
-  { value: "morning", label: "Morning — 9:00 AM to 11:00 AM" },
   { value: "late-morning", label: "Late Morning — 11:00 AM to 1:00 PM" },
   { value: "afternoon", label: "Afternoon — 2:00 PM to 4:00 PM" },
-  { value: "evening", label: "Evening — 5:00 PM to 7:00 PM" },
+  { value: "late-afternoon", label: "Late Afternoon — 4:00 PM to 6:00 PM" },
+  { value: "evening", label: "Evening — 6:00 PM to 8:00 PM" },
 ];
 
 const INITIAL_FORM: FormState = {
@@ -119,13 +119,13 @@ export function AppointmentSection() {
                 </span>
               </div>
               <div className="space-y-2 text-sm font-body">
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-4">
                   <span className="text-muted-foreground">Monday – Saturday</span>
-                  <span className="font-medium text-foreground">9:00 AM – 7:00 PM</span>
+                  <span className="font-medium text-foreground text-right">11:00 AM – 8:00 PM (By Appointment)</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-4">
                   <span className="text-muted-foreground">Sunday</span>
-                  <span className="font-medium text-foreground">10:00 AM – 1:00 PM</span>
+                  <span className="font-medium text-foreground text-right">Pre-Appointments Only</span>
                 </div>
               </div>
             </div>

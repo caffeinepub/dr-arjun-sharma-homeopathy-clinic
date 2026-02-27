@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { useDoctorContext } from "@/context/DoctorContext";
 
 const trustBadges = [
-  { icon: Award, label: "15+ Years Experience" },
-  { icon: Users, label: "5000+ Patients" },
+  { icon: Award, label: "30+ Years Experience" },
+  { icon: Users, label: "10,000+ Patients" },
   { icon: Leaf, label: "100% Natural" },
 ];
 
