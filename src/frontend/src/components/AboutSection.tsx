@@ -3,8 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import { useDoctorContext } from "@/context/DoctorContext";
 
 const stats = [
-  { value: "15+", label: "Years Experience", icon: Award },
-  { value: "5000+", label: "Happy Patients", icon: Users2 },
+  { value: "30+", label: "Years Experience", icon: Award },
+  { value: "10,000+", label: "Happy Patients", icon: Users2 },
   { value: "200+", label: "Conditions Treated", icon: Stethoscope },
 ];
 
@@ -25,7 +25,7 @@ export function AboutSection() {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-hero">
               <img
-                src="/assets/generated/doctor-portrait.dim_600x700.jpg"
+                src="/assets/uploads/image-1-1.png"
                 alt={`${profile.name} — Homeopathic Doctor`}
                 className="w-full h-[500px] md:h-[600px] object-cover"
               />

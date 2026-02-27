@@ -5,7 +5,6 @@ import { HeroSection } from "./components/HeroSection";
 import { AboutSection } from "./components/AboutSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { WhyHomeopathySection } from "./components/WhyHomeopathySection";
-import { TestimonialsSection } from "./components/TestimonialsSection";
 import { AppointmentSection } from "./components/AppointmentSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
@@ -56,7 +55,6 @@ export default function App() {
           <AboutSection />
           <ServicesSection />
           <WhyHomeopathySection />
-          <TestimonialsSection />
           <AppointmentSection />
           <ContactSection />
         </main>

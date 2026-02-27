@@ -50,7 +50,7 @@ export function Navbar() {
                 Dr. Sheeba
               </span>
               <span className={`text-xs font-body leading-tight transition-colors ${isScrolled ? "text-muted-foreground" : "text-white/80"}`}>
-                BHMS, MD Homeopathy
+                BHMS Homeopathy
               </span>
             </div>
           </button>
@@ -76,13 +76,13 @@ export function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="tel:+919876543210"
+              href="tel:+919289371243"
               className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
                 isScrolled ? "text-forest" : "text-white/90 hover:text-white"
               }`}
             >
               <Phone className="w-4 h-4" />
-              <span>+91 98765 43210</span>
+              <span>+91 92893 71243</span>
             </a>
             <Button
               onClick={() => handleNavClick("#appointment")}

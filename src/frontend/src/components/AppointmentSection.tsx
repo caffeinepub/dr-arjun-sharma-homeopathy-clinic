@@ -155,7 +155,7 @@ export function AppointmentSection() {
                   <Input
                     id="appt-phone"
                     type="tel"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 92893 71243"
                     value={form.phone}
                     onChange={handleChange("phone")}
                     required
