@@ -1,6 +1,13 @@
-import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from "react";
-import { createActorWithConfig } from "@/config";
 import type { DoctorProfile, Service } from "@/backend.d";
+import { createActorWithConfig } from "@/config";
+import {
+  type ReactNode,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 const DEFAULT_PROFILE: DoctorProfile = {
   name: "Dr. Sheeba",
@@ -9,7 +16,8 @@ const DEFAULT_PROFILE: DoctorProfile = {
   address: "Flat C-502, Rajasthan Apartment\nSector 4, Dwarka, Delhi — 110078",
   phone: "+91 92893 71243",
   email: "dr.sheeba@homeopathy.com",
-  clinicHours: "Mon–Sat: 11:00 AM – 8:00 PM (By Appointment)\nSunday: Pre-Appointments Only",
+  clinicHours:
+    "Mon–Sat: 11:00 AM – 8:00 PM (By Appointment)\nSunday: Pre-Appointments Only",
 };
 
 interface DoctorContextValue {
@@ -74,7 +82,9 @@ export function DoctorProvider({ children }: { children: ReactNode }) {
   }, [fetchServices]);
 
   return (
-    <DoctorContext.Provider value={{ profile, services, loading, refreshProfile, refreshServices }}>
+    <DoctorContext.Provider
+      value={{ profile, services, loading, refreshProfile, refreshServices }}
+    >
       {children}
     </DoctorContext.Provider>
   );

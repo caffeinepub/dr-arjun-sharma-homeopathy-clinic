@@ -1,5 +1,13 @@
-import { Leaf, Heart, Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react";
 import { useDoctorContext } from "@/context/DoctorContext";
+import {
+  Facebook,
+  Heart,
+  Instagram,
+  Leaf,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 
 const quickLinks = [
   { label: "Home", href: "#home" },
@@ -31,19 +39,24 @@ export function Footer() {
           {/* Brand column */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "oklch(1 0 0 / 0.15)" }}>
+              <div
+                className="w-9 h-9 rounded-full flex items-center justify-center"
+                style={{ background: "oklch(1 0 0 / 0.15)" }}
+              >
                 <Leaf className="w-5 h-5 text-gold" />
               </div>
               <div>
                 <div className="font-display font-semibold text-white text-lg leading-tight">
                   {profile.name}
                 </div>
-                <div className="text-xs text-white/60">{profile.qualification}</div>
+                <div className="text-xs text-white/60">
+                  {profile.qualification}
+                </div>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-white/65 mb-6 font-body">
-              Providing gentle, effective homeopathic care for families across Dwarka and Delhi
-              with {profile.name}'s trusted expertise.
+              Providing gentle, effective homeopathic care for families across
+              Dwarka and Delhi with {profile.name}'s trusted expertise.
             </p>
             {/* Social links */}
             <div className="flex gap-3">

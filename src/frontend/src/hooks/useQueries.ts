@@ -1,6 +1,6 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { useActor } from "./useActor";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { createActorWithConfig } from "../config";
+import { useActor } from "./useActor";
 
 interface Testimonial {
   id: bigint;
@@ -50,7 +50,7 @@ export function useBookAppointment() {
           data.email,
           data.preferredDate,
           data.preferredTime,
-          data.reason
+          data.reason,
         );
       }
     },
@@ -72,7 +72,7 @@ export function useSubmitContactMessage() {
         data.name,
         data.phone,
         data.email,
-        data.message
+        data.message,
       );
     },
   });

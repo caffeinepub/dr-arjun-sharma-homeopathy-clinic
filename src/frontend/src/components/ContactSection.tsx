@@ -1,12 +1,19 @@
-import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, CheckCircle2, Loader2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { useSubmitContactMessage } from "@/hooks/useQueries";
 import { useDoctorContext } from "@/context/DoctorContext";
+import { useSubmitContactMessage } from "@/hooks/useQueries";
+import {
+  CheckCircle2,
+  Clock,
+  Loader2,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
+import { useState } from "react";
 
 interface ContactForm {
   name: string;
@@ -21,7 +28,11 @@ export function ContactSection() {
   const { profile } = useDoctorContext();
   const [form, setForm] = useState<ContactForm>(INITIAL);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { mutateAsync: submitMessage, isPending, error } = useSubmitContactMessage();
+  const {
+    mutateAsync: submitMessage,
+    isPending,
+    error,
+  } = useSubmitContactMessage();
 
   const contactDetails = [
     {
@@ -48,11 +59,11 @@ export function ContactSection() {
     },
   ];
 
-  const handleChange = (field: keyof ContactForm) => (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
-  };
+  const handleChange =
+    (field: keyof ContactForm) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,15 +81,18 @@ export function ContactSection() {
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge className="mb-4 text-forest-light border-forest-light font-medium" variant="outline">
+          <Badge
+            className="mb-4 text-forest-light border-forest-light font-medium"
+            variant="outline"
+          >
             Get in Touch
           </Badge>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-forest mb-4 leading-tight">
-            Contact{" "}
-            <span className="italic text-forest-light">the Clinic</span>
+            Contact <span className="italic text-forest-light">the Clinic</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto font-body">
-            Have questions? Reach out to us and we'll get back to you within 24 hours.
+            Have questions? Reach out to us and we'll get back to you within 24
+            hours.
           </p>
         </div>
 
@@ -176,7 +190,10 @@ export function ContactSection() {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="contact-phone" className="text-sm font-medium">
+                    <Label
+                      htmlFor="contact-phone"
+                      className="text-sm font-medium"
+                    >
                       Phone
                     </Label>
                     <Input
@@ -188,7 +205,10 @@ export function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="contact-email" className="text-sm font-medium">
+                    <Label
+                      htmlFor="contact-email"
+                      className="text-sm font-medium"
+                    >
                       Email <span className="text-destructive">*</span>
                     </Label>
                     <Input
@@ -203,7 +223,10 @@ export function ContactSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="contact-message" className="text-sm font-medium">
+                  <Label
+                    htmlFor="contact-message"
+                    className="text-sm font-medium"
+                  >
                     Message <span className="text-destructive">*</span>
                   </Label>
                   <Textarea

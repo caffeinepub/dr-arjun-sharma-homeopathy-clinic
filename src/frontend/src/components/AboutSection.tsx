@@ -1,9 +1,9 @@
-import { Award, GraduationCap, Users2, Stethoscope } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useDoctorContext } from "@/context/DoctorContext";
+import { Award, GraduationCap, Stethoscope, Users2 } from "lucide-react";
 
 const stats = [
-  { value: "30+", label: "Years Experience", icon: Award },
+  { value: "30+", label: "Years of Clinical Experience", icon: Award },
   { value: "10,000+", label: "Happy Patients", icon: Users2 },
   { value: "200+", label: "Conditions Treated", icon: Stethoscope },
 ];
@@ -32,18 +32,22 @@ export function AboutSection() {
               {/* Decorative border */}
               <div
                 className="absolute inset-0 rounded-2xl"
-                style={{ boxShadow: "inset 0 0 0 1px oklch(0.42 0.085 158 / 0.15)" }}
+                style={{
+                  boxShadow: "inset 0 0 0 1px oklch(0.42 0.085 158 / 0.15)",
+                }}
               />
             </div>
             {/* Floating credential card */}
-            <div
-              className="absolute -bottom-6 -right-4 md:-right-8 bg-white rounded-xl p-4 shadow-card border border-border max-w-[220px]"
-            >
+            <div className="absolute -bottom-6 -right-4 md:-right-8 bg-white rounded-xl p-4 shadow-card border border-border max-w-[220px]">
               <div className="flex items-center gap-2 mb-1">
                 <GraduationCap className="w-5 h-5 text-forest" />
-                <span className="text-xs font-semibold text-forest uppercase tracking-wide">{qualifications[0] ?? "BHMS"}</span>
+                <span className="text-xs font-semibold text-forest uppercase tracking-wide">
+                  {qualifications[0] ?? "BHMS"}
+                </span>
               </div>
-              <p className="text-sm text-muted-foreground font-body">{profile.qualification}</p>
+              <p className="text-sm text-muted-foreground font-body">
+                {profile.qualification}
+              </p>
             </div>
             {/* Decorative green square */}
             <div
@@ -74,7 +78,10 @@ export function AboutSection() {
               </h3>
               <ul className="space-y-2">
                 {qualifications.map((q) => (
-                  <li key={q} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                  <li
+                    key={q}
+                    className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                  >
                     <span
                       className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
                       style={{ background: "oklch(0.42 0.085 158)" }}
@@ -98,8 +105,12 @@ export function AboutSection() {
                   className="text-center p-4 rounded-xl border border-border bg-white shadow-xs"
                 >
                   <Icon className="w-6 h-6 text-forest mx-auto mb-2" />
-                  <div className="font-display text-3xl font-bold text-forest mb-0.5">{value}</div>
-                  <div className="text-xs text-muted-foreground font-body leading-tight">{label}</div>
+                  <div className="font-display text-3xl font-bold text-forest mb-0.5">
+                    {value}
+                  </div>
+                  <div className="text-xs text-muted-foreground font-body leading-tight">
+                    {label}
+                  </div>
                 </div>
               ))}
             </div>

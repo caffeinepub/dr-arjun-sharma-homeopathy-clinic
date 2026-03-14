@@ -42,8 +42,8 @@ actor {
   var doctorProfile : ?DoctorProfile = null;
   let contactMessages = Map.empty<Nat, ContactMessage>();
   let validSessionTokens = Map.empty<SessionToken, Time.Time>();
-  let sessionTimeout = 24 * 60 * 60 * 1_000_000_000;
-  let defaultAdminPassword = "admin1234";
+  let sessionTimeout : Nat = 24 * 60 * 60 * 1_000_000_000;
+  let adminPassword = "sheeba2024";
 
   public shared ({ caller }) func setDoctorProfile(profile : DoctorProfile, token : SessionToken) : async () {
     if (not validateSessionInternal(token)) {
@@ -96,8 +96,30 @@ actor {
     services.values().toArray();
   };
 
+  public shared ({ caller }) func submitContactMessage(name : Text, phone : Text, email : Text, message : Text) : async Nat {
+    let id = nextMessageId;
+    let contactMessage : ContactMessage = {
+      id;
+      name;
+      phone;
+      email;
+      message;
+      timestamp = Time.now();
+    };
+    contactMessages.add(id, contactMessage);
+    nextMessageId += 1;
+    id;
+  };
+
+  public shared ({ caller }) func getAllContactMessages(token : SessionToken) : async [ContactMessage] {
+    if (not validateSessionInternal(token)) {
+      Runtime.trap("Invalid session token");
+    };
+    contactMessages.values().toArray();
+  };
+
   public shared ({ caller }) func adminLogin(password : Text) : async SessionToken {
-    if (password != defaultAdminPassword) {
+    if (password != adminPassword) {
       Runtime.trap("Invalid password");
     };
 
@@ -129,27 +151,5 @@ actor {
     let timestamp = Time.now().toText();
     let token = timestamp;
     token;
-  };
-
-  public shared ({ caller }) func submitContactMessage(name : Text, phone : Text, email : Text, message : Text) : async Nat {
-    let id = nextMessageId;
-    let contactMessage : ContactMessage = {
-      id;
-      name;
-      phone;
-      email;
-      message;
-      timestamp = Time.now();
-    };
-    contactMessages.add(id, contactMessage);
-    nextMessageId += 1;
-    id;
-  };
-
-  public shared ({ caller }) func getAllContactMessages(token : SessionToken) : async [ContactMessage] {
-    if (not validateSessionInternal(token)) {
-      Runtime.trap("Invalid session token");
-    };
-    contactMessages.values().toArray();
   };
 };

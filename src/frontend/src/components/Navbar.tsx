@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { Leaf, Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Leaf, Menu, Phone, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -46,11 +46,15 @@ export function Navbar() {
               <Leaf className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className={`font-display font-semibold text-lg leading-tight transition-colors ${isScrolled ? "text-forest" : "text-white"}`}>
+              <span
+                className={`font-display font-semibold text-lg leading-tight transition-colors ${isScrolled ? "text-forest" : "text-white"}`}
+              >
                 Dr. Sheeba
               </span>
-              <span className={`text-xs font-body leading-tight transition-colors ${isScrolled ? "text-muted-foreground" : "text-white/80"}`}>
-                BHMS Homeopathy
+              <span
+                className={`text-xs font-body leading-tight transition-colors ${isScrolled ? "text-muted-foreground" : "text-white/80"}`}
+              >
+                Bachelor of Homoeopathic Medicine and Surgery -JPR
               </span>
             </div>
           </button>
@@ -101,7 +105,11 @@ export function Navbar() {
             }`}
             aria-label="Toggle menu"
           >
-            {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isMobileOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </button>
         </div>
       </div>

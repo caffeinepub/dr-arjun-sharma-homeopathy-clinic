@@ -1,12 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
-import { Loader2, LogOut, ArrowLeft, Plus, Pencil, Trash2, Save, X, Leaf, MessageSquare, UserCog, Stethoscope } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type {
+  ContactMessage,
+  DoctorProfile,
+  Service,
+  SessionToken,
+} from "@/backend.d";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Table,
   TableBody,
@@ -15,9 +17,25 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { toast } from "sonner";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 import { createActorWithConfig } from "@/config";
-import type { DoctorProfile, Service, ContactMessage, SessionToken } from "@/backend.d";
+import {
+  ArrowLeft,
+  Leaf,
+  Loader2,
+  LogOut,
+  MessageSquare,
+  Pencil,
+  Plus,
+  Save,
+  Stethoscope,
+  Trash2,
+  UserCog,
+  X,
+} from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const DEFAULT_PROFILE: DoctorProfile = {
   name: "Dr. Sheeba",
@@ -62,11 +80,15 @@ function LoginScreen({ onLogin }: { onLogin: (token: SessionToken) => void }) {
     >
       <Card className="w-full max-w-sm shadow-xl border-border">
         <CardHeader className="text-center pb-2">
-          <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
-            style={{ background: "oklch(0.42 0.085 158 / 0.12)" }}>
+          <div
+            className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
+            style={{ background: "oklch(0.42 0.085 158 / 0.12)" }}
+          >
             <Leaf className="w-7 h-7 text-forest" />
           </div>
-          <CardTitle className="font-display text-2xl text-forest">Admin Login</CardTitle>
+          <CardTitle className="font-display text-2xl text-forest">
+            Admin Login
+          </CardTitle>
           <p className="text-sm text-muted-foreground font-body">
             Dr. Sheeba Homeopathy Clinic
           </p>
@@ -123,16 +145,20 @@ function ProfileEditor({ token }: { token: SessionToken }) {
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
-    createActorWithConfig().then((actor) => actor.getDoctorProfile()).then((result) => {
-      if (result !== null) setProfile(result);
-    }).catch(() => {}).finally(() => setIsFetching(false));
+    createActorWithConfig()
+      .then((actor) => actor.getDoctorProfile())
+      .then((result) => {
+        if (result !== null) setProfile(result);
+      })
+      .catch(() => {})
+      .finally(() => setIsFetching(false));
   }, []);
 
-  const handleChange = (field: keyof DoctorProfile) => (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setProfile((prev) => ({ ...prev, [field]: e.target.value }));
-  };
+  const handleChange =
+    (field: keyof DoctorProfile) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setProfile((prev) => ({ ...prev, [field]: e.target.value }));
+    };
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -298,7 +324,11 @@ function ServicesManager({ token }: { token: SessionToken }) {
   }, [fetchServices]);
 
   const handleStartEdit = (service: Service) => {
-    setEditing({ id: service.id, title: service.title, description: service.description });
+    setEditing({
+      id: service.id,
+      title: service.title,
+      description: service.description,
+    });
   };
 
   const handleStartAdd = () => {
@@ -317,7 +347,12 @@ function ServicesManager({ token }: { token: SessionToken }) {
         await actor.addService(editing.title, editing.description, token);
         toast.success("Service added successfully!");
       } else {
-        await actor.updateService(editing.id, editing.title, editing.description, token);
+        await actor.updateService(
+          editing.id,
+          editing.title,
+          editing.description,
+          token,
+        );
         toast.success("Service updated successfully!");
       }
       setEditing(null);
@@ -330,7 +365,8 @@ function ServicesManager({ token }: { token: SessionToken }) {
   };
 
   const handleDelete = async (id: bigint) => {
-    if (!window.confirm("Are you sure you want to delete this service?")) return;
+    if (!window.confirm("Are you sure you want to delete this service?"))
+      return;
     setDeletingId(id);
     try {
       const actor = await createActorWithConfig();
@@ -380,7 +416,11 @@ function ServicesManager({ token }: { token: SessionToken }) {
                 <Input
                   id="svc-title"
                   value={editing.title}
-                  onChange={(e) => setEditing((prev) => prev ? { ...prev, title: e.target.value } : null)}
+                  onChange={(e) =>
+                    setEditing((prev) =>
+                      prev ? { ...prev, title: e.target.value } : null,
+                    )
+                  }
                   placeholder="e.g., Laser Treatment"
                   required
                   autoFocus
@@ -391,7 +431,11 @@ function ServicesManager({ token }: { token: SessionToken }) {
                 <Textarea
                   id="svc-desc"
                   value={editing.description}
-                  onChange={(e) => setEditing((prev) => prev ? { ...prev, description: e.target.value } : null)}
+                  onChange={(e) =>
+                    setEditing((prev) =>
+                      prev ? { ...prev, description: e.target.value } : null,
+                    )
+                  }
                   rows={3}
                   className="resize-none"
                   placeholder="Describe this service..."
@@ -434,7 +478,9 @@ function ServicesManager({ token }: { token: SessionToken }) {
       {services.length === 0 ? (
         <div className="text-center py-12 text-muted-foreground">
           <Stethoscope className="w-10 h-10 mx-auto mb-3 opacity-30" />
-          <p className="font-body text-sm">No services yet. Add your first service above.</p>
+          <p className="font-body text-sm">
+            No services yet. Add your first service above.
+          </p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -443,8 +489,12 @@ function ServicesManager({ token }: { token: SessionToken }) {
               <CardContent className="pt-4 pb-4">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-forest text-sm font-display">{service.title}</h4>
-                    <p className="text-xs text-muted-foreground font-body mt-1 line-clamp-2">{service.description}</p>
+                    <h4 className="font-semibold text-forest text-sm font-display">
+                      {service.title}
+                    </h4>
+                    <p className="text-xs text-muted-foreground font-body mt-1 line-clamp-2">
+                      {service.description}
+                    </p>
                   </div>
                   <div className="flex gap-2 shrink-0">
                     <Button
@@ -526,8 +576,12 @@ function MessagesViewer({ token }: { token: SessionToken }) {
           {messages.map((msg) => (
             <TableRow key={msg.id.toString()}>
               <TableCell className="font-medium text-sm">{msg.name}</TableCell>
-              <TableCell className="text-sm text-muted-foreground">{msg.phone}</TableCell>
-              <TableCell className="text-sm text-muted-foreground break-all">{msg.email}</TableCell>
+              <TableCell className="text-sm text-muted-foreground">
+                {msg.phone}
+              </TableCell>
+              <TableCell className="text-sm text-muted-foreground break-all">
+                {msg.email}
+              </TableCell>
               <TableCell className="text-sm text-muted-foreground max-w-xs">
                 <span className="line-clamp-2">{msg.message}</span>
               </TableCell>
@@ -541,29 +595,44 @@ function MessagesViewer({ token }: { token: SessionToken }) {
 
 // ─── Dashboard ───────────────────────────────────────────────────────────────
 
-function Dashboard({ token, onLogout }: { token: SessionToken; onLogout: () => void }) {
+function Dashboard({
+  token,
+  onLogout,
+}: { token: SessionToken; onLogout: () => void }) {
   const handleBackToWebsite = () => {
     window.location.hash = "";
     window.location.reload();
   };
 
   return (
-    <div className="min-h-screen" style={{ background: "oklch(0.97 0.01 158)" }}>
+    <div
+      className="min-h-screen"
+      style={{ background: "oklch(0.97 0.01 158)" }}
+    >
       {/* Header */}
       <header className="bg-forest text-white shadow-sm sticky top-0 z-10">
         <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full flex items-center justify-center"
-              style={{ background: "oklch(1 0 0 / 0.15)" }}>
+            <div
+              className="w-9 h-9 rounded-full flex items-center justify-center"
+              style={{ background: "oklch(1 0 0 / 0.15)" }}
+            >
               <Leaf className="w-5 h-5 text-gold" />
             </div>
             <div>
-              <h1 className="font-display font-semibold text-lg leading-tight">Admin Dashboard</h1>
-              <p className="text-xs text-white/60">Dr. Sheeba Homeopathy Clinic</p>
+              <h1 className="font-display font-semibold text-lg leading-tight">
+                Admin Dashboard
+              </h1>
+              <p className="text-xs text-white/60">
+                Dr. Sheeba Homeopathy Clinic
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Badge variant="secondary" className="bg-white/10 text-white border-none text-xs hidden sm:flex">
+            <Badge
+              variant="secondary"
+              className="bg-white/10 text-white border-none text-xs hidden sm:flex"
+            >
               Admin
             </Badge>
             <Button
@@ -591,15 +660,24 @@ function Dashboard({ token, onLogout }: { token: SessionToken; onLogout: () => v
       <main className="container max-w-6xl mx-auto px-4 sm:px-6 py-8">
         <Tabs defaultValue="profile" className="space-y-6">
           <TabsList className="bg-white border border-border shadow-sm">
-            <TabsTrigger value="profile" className="gap-2 data-[state=active]:bg-forest data-[state=active]:text-white">
+            <TabsTrigger
+              value="profile"
+              className="gap-2 data-[state=active]:bg-forest data-[state=active]:text-white"
+            >
               <UserCog className="h-4 w-4" />
               Doctor Profile
             </TabsTrigger>
-            <TabsTrigger value="services" className="gap-2 data-[state=active]:bg-forest data-[state=active]:text-white">
+            <TabsTrigger
+              value="services"
+              className="gap-2 data-[state=active]:bg-forest data-[state=active]:text-white"
+            >
               <Stethoscope className="h-4 w-4" />
               Services
             </TabsTrigger>
-            <TabsTrigger value="messages" className="gap-2 data-[state=active]:bg-forest data-[state=active]:text-white">
+            <TabsTrigger
+              value="messages"
+              className="gap-2 data-[state=active]:bg-forest data-[state=active]:text-white"
+            >
               <MessageSquare className="h-4 w-4" />
               Messages
             </TabsTrigger>
@@ -610,10 +688,13 @@ function Dashboard({ token, onLogout }: { token: SessionToken; onLogout: () => v
               <CardHeader className="border-b border-border">
                 <div className="flex items-center gap-2">
                   <UserCog className="h-5 w-5 text-forest" />
-                  <CardTitle className="font-display text-xl text-forest">Doctor Profile</CardTitle>
+                  <CardTitle className="font-display text-xl text-forest">
+                    Doctor Profile
+                  </CardTitle>
                 </div>
                 <p className="text-sm text-muted-foreground font-body">
-                  Update the doctor's information. Changes will appear on the website immediately.
+                  Update the doctor's information. Changes will appear on the
+                  website immediately.
                 </p>
               </CardHeader>
               <CardContent className="pt-6">
@@ -627,7 +708,9 @@ function Dashboard({ token, onLogout }: { token: SessionToken; onLogout: () => v
               <CardHeader className="border-b border-border">
                 <div className="flex items-center gap-2">
                   <Stethoscope className="h-5 w-5 text-forest" />
-                  <CardTitle className="font-display text-xl text-forest">Services</CardTitle>
+                  <CardTitle className="font-display text-xl text-forest">
+                    Services
+                  </CardTitle>
                 </div>
                 <p className="text-sm text-muted-foreground font-body">
                   Manage the treatments and services shown on the website.
@@ -644,7 +727,9 @@ function Dashboard({ token, onLogout }: { token: SessionToken; onLogout: () => v
               <CardHeader className="border-b border-border">
                 <div className="flex items-center gap-2">
                   <MessageSquare className="h-5 w-5 text-forest" />
-                  <CardTitle className="font-display text-xl text-forest">Contact Messages</CardTitle>
+                  <CardTitle className="font-display text-xl text-forest">
+                    Contact Messages
+                  </CardTitle>
                 </div>
                 <p className="text-sm text-muted-foreground font-body">
                   Messages submitted through the contact form on the website.

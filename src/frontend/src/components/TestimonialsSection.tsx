@@ -1,7 +1,7 @@
-import { Star, Quote } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetApprovedTestimonials } from "@/hooks/useQueries";
+import { Quote, Star } from "lucide-react";
 
 interface Testimonial {
   id: bigint;
@@ -98,14 +98,19 @@ export function TestimonialsSection() {
   const { data: testimonials, isLoading } = useGetApprovedTestimonials();
 
   const displayTestimonials =
-    testimonials && testimonials.length > 0 ? testimonials : fallbackTestimonials;
+    testimonials && testimonials.length > 0
+      ? testimonials
+      : fallbackTestimonials;
 
   return (
     <section id="testimonials" className="py-24 bg-cream-dark">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge className="mb-4 text-forest-light border-forest-light font-medium" variant="outline">
+          <Badge
+            className="mb-4 text-forest-light border-forest-light font-medium"
+            variant="outline"
+          >
             Patient Stories
           </Badge>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-forest mb-4 leading-tight">
@@ -113,7 +118,8 @@ export function TestimonialsSection() {
             <span className="italic text-forest-light">Patients Say</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-base font-body">
-            Real experiences from patients who found lasting wellness through homeopathic care.
+            Real experiences from patients who found lasting wellness through
+            homeopathic care.
           </p>
         </div>
 
@@ -121,7 +127,10 @@ export function TestimonialsSection() {
         {isLoading ? (
           <div className="grid md:grid-cols-3 gap-6">
             {(["a", "b", "c"] as const).map((id) => (
-              <div key={id} className="p-6 rounded-2xl bg-white border border-border space-y-3">
+              <div
+                key={id}
+                className="p-6 rounded-2xl bg-white border border-border space-y-3"
+              >
                 <Skeleton className="h-4 w-24" />
                 <Skeleton className="h-4 w-full" />
                 <Skeleton className="h-4 w-full" />

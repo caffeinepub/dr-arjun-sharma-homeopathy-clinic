@@ -1,9 +1,7 @@
-import { useState } from "react";
-import { CalendarDays, CheckCircle2, Loader2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -11,8 +9,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
+import { Textarea } from "@/components/ui/textarea";
 import { useBookAppointment } from "@/hooks/useQueries";
+import { CalendarDays, CheckCircle2, Loader2 } from "lucide-react";
+import { useState } from "react";
 
 interface FormState {
   name: string;
@@ -42,15 +42,19 @@ const INITIAL_FORM: FormState = {
 export function AppointmentSection() {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { mutateAsync: bookAppointment, isPending, error } = useBookAppointment();
+  const {
+    mutateAsync: bookAppointment,
+    isPending,
+    error,
+  } = useBookAppointment();
 
   const today = new Date().toISOString().split("T")[0];
 
-  const handleChange = (field: keyof FormState) => (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
-  };
+  const handleChange =
+    (field: keyof FormState) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,7 +82,8 @@ export function AppointmentSection() {
               Appointment Booked!
             </h2>
             <p className="text-muted-foreground font-body mb-6">
-              Thank you! Dr. Sheeba's team will confirm your appointment shortly. Please check your email for details.
+              Thank you! Dr. Sheeba's team will confirm your appointment
+              shortly. Please check your email for details.
             </p>
             <Button
               onClick={() => setIsSuccess(false)}
@@ -98,7 +103,10 @@ export function AppointmentSection() {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left info panel */}
           <div>
-            <Badge className="mb-4 text-forest-light border-forest-light font-medium" variant="outline">
+            <Badge
+              className="mb-4 text-forest-light border-forest-light font-medium"
+              variant="outline"
+            >
               Schedule a Visit
             </Badge>
             <h2 className="font-display text-4xl md:text-5xl font-semibold text-forest mb-6 leading-tight">
@@ -106,8 +114,9 @@ export function AppointmentSection() {
               <span className="italic text-forest-light">Appointment</span>
             </h2>
             <p className="text-muted-foreground font-body leading-relaxed mb-8">
-              Schedule your consultation with Dr. Sheeba. We offer flexible timing
-              slots to fit your schedule. Appointments are confirmed within 24 hours.
+              Schedule your consultation with Dr. Sheeba. We offer flexible
+              timing slots to fit your schedule. Appointments are confirmed
+              within 24 hours.
             </p>
 
             {/* Clinic hours */}
@@ -120,12 +129,18 @@ export function AppointmentSection() {
               </div>
               <div className="space-y-2 text-sm font-body">
                 <div className="flex justify-between gap-4">
-                  <span className="text-muted-foreground">Monday – Saturday</span>
-                  <span className="font-medium text-foreground text-right">11:00 AM – 8:00 PM (By Appointment)</span>
+                  <span className="text-muted-foreground">
+                    Monday – Saturday
+                  </span>
+                  <span className="font-medium text-foreground text-right">
+                    11:00 AM – 8:00 PM (By Appointment)
+                  </span>
                 </div>
                 <div className="flex justify-between gap-4">
                   <span className="text-muted-foreground">Sunday</span>
-                  <span className="font-medium text-foreground text-right">Pre-Appointments Only</span>
+                  <span className="font-medium text-foreground text-right">
+                    Pre-Appointments Only
+                  </span>
                 </div>
               </div>
             </div>
@@ -136,7 +151,10 @@ export function AppointmentSection() {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="appt-name" className="text-sm font-medium text-foreground">
+                  <Label
+                    htmlFor="appt-name"
+                    className="text-sm font-medium text-foreground"
+                  >
                     Full Name <span className="text-destructive">*</span>
                   </Label>
                   <Input
@@ -149,7 +167,10 @@ export function AppointmentSection() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="appt-phone" className="text-sm font-medium text-foreground">
+                  <Label
+                    htmlFor="appt-phone"
+                    className="text-sm font-medium text-foreground"
+                  >
                     Phone Number <span className="text-destructive">*</span>
                   </Label>
                   <Input
@@ -165,7 +186,10 @@ export function AppointmentSection() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="appt-email" className="text-sm font-medium text-foreground">
+                <Label
+                  htmlFor="appt-email"
+                  className="text-sm font-medium text-foreground"
+                >
                   Email Address <span className="text-destructive">*</span>
                 </Label>
                 <Input
@@ -181,7 +205,10 @@ export function AppointmentSection() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="appt-date" className="text-sm font-medium text-foreground">
+                  <Label
+                    htmlFor="appt-date"
+                    className="text-sm font-medium text-foreground"
+                  >
                     Preferred Date <span className="text-destructive">*</span>
                   </Label>
                   <Input
@@ -220,7 +247,10 @@ export function AppointmentSection() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="appt-reason" className="text-sm font-medium text-foreground">
+                <Label
+                  htmlFor="appt-reason"
+                  className="text-sm font-medium text-foreground"
+                >
                   Reason for Visit
                 </Label>
                 <Textarea

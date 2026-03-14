@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
-import { Navbar } from "./components/Navbar";
-import { HeroSection } from "./components/HeroSection";
+import { useEffect, useState } from "react";
 import { AboutSection } from "./components/AboutSection";
-import { ServicesSection } from "./components/ServicesSection";
-import { WhyHomeopathySection } from "./components/WhyHomeopathySection";
+import { AdminPanel } from "./components/AdminPanel";
 import { AppointmentSection } from "./components/AppointmentSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
-import { AdminPanel } from "./components/AdminPanel";
+import { HeroSection } from "./components/HeroSection";
+import { Navbar } from "./components/Navbar";
+import { ServicesSection } from "./components/ServicesSection";
+import { WhyHomeopathySection } from "./components/WhyHomeopathySection";
 import { DoctorProvider } from "./context/DoctorContext";
 
 function scrollToSection(id: string) {

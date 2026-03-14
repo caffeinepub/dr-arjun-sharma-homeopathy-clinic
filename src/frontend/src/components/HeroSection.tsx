@@ -1,9 +1,8 @@
-import { Award, Users, Leaf, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useDoctorContext } from "@/context/DoctorContext";
+import { Award, ChevronDown, Leaf, Users } from "lucide-react";
 
 const trustBadges = [
-  { icon: Award, label: "30+ Years Experience" },
+  { icon: Award, label: "More than three decades of clinical experience" },
   { icon: Users, label: "10,000+ Patients" },
   { icon: Leaf, label: "100% Natural" },
 ];
@@ -13,9 +12,10 @@ interface HeroSectionProps {
   onLearnMore: () => void;
 }
 
-export function HeroSection({ onBookAppointment, onLearnMore }: HeroSectionProps) {
-  const { profile } = useDoctorContext();
-
+export function HeroSection({
+  onBookAppointment,
+  onLearnMore,
+}: HeroSectionProps) {
   return (
     <section
       id="home"
@@ -24,7 +24,10 @@ export function HeroSection({ onBookAppointment, onLearnMore }: HeroSectionProps
       {/* Background image with overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/assets/generated/clinic-interior.dim_1200x600.jpg')" }}
+        style={{
+          backgroundImage:
+            "url('/assets/generated/clinic-interior.dim_1200x600.jpg')",
+        }}
         aria-hidden="true"
       />
       {/* Gradient overlay */}
@@ -58,23 +61,6 @@ export function HeroSection({ onBookAppointment, onLearnMore }: HeroSectionProps
       {/* Content */}
       <div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16">
         <div className="max-w-3xl">
-          {/* Credentials badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border border-white/20 animate-fade-in"
-            style={{ background: "oklch(1 0 0 / 0.12)", backdropFilter: "blur(8px)" }}>
-            <Leaf className="w-4 h-4 text-gold" />
-            <span className="text-white/90 text-sm font-medium">
-              {profile.name} — {profile.qualification} | Dwarka, Delhi
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-semibold text-white leading-tight mb-6 animate-fade-in-up">
-            Natural{" "}
-            <span className="italic text-gold">Healing,</span>
-            <br />
-            Lasting Wellness
-          </h1>
-
           {/* Subheadline */}
           <p className="text-xl sm:text-2xl text-white/85 mb-8 font-body leading-relaxed max-w-xl animate-fade-in-up delay-200">
             Expert Homeopathic Care in Dwarka, Delhi — Treating the whole
@@ -108,9 +94,15 @@ export function HeroSection({ onBookAppointment, onLearnMore }: HeroSectionProps
               <div
                 key={label}
                 className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-white/15"
-                style={{ background: "oklch(1 0 0 / 0.1)", backdropFilter: "blur(8px)" }}
+                style={{
+                  background: "oklch(1 0 0 / 0.1)",
+                  backdropFilter: "blur(8px)",
+                }}
               >
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "oklch(0.75 0.13 85 / 0.3)" }}>
+                <div
+                  className="w-8 h-8 rounded-lg flex items-center justify-center"
+                  style={{ background: "oklch(0.75 0.13 85 / 0.3)" }}
+                >
                   <Icon className="w-4 h-4 text-gold" />
                 </div>
                 <span className="text-white font-medium text-sm">{label}</span>

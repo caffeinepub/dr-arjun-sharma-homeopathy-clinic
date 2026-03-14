@@ -1,4 +1,4 @@
-import { ShieldCheck, Target, Heart } from "lucide-react";
+import { Heart, ShieldCheck, Target } from "lucide-react";
 
 const benefits = [
   {
@@ -56,9 +56,10 @@ export function WhyHomeopathySection() {
             </span>
           </h2>
           <p className="text-white/75 max-w-2xl mx-auto text-base font-body leading-relaxed">
-            Homeopathy is a 200-year-old system of medicine that uses highly diluted natural
-            substances to trigger the body's natural healing response. It treats the whole
-            person — physical, mental, and emotional — to restore balance and harmony.
+            Homeopathy is a 200-year-old system of medicine that uses highly
+            diluted natural substances to trigger the body's natural healing
+            response. It treats the whole person — physical, mental, and
+            emotional — to restore balance and harmony.
           </p>
         </div>
 
