@@ -4,6 +4,7 @@ import {
   Heart,
   Instagram,
   Leaf,
+  Lock,
   Mail,
   MapPin,
   Phone,
@@ -32,7 +33,10 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-forest text-white/85">
+    <footer
+      className="bg-forest text-white"
+      style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
+    >
       {/* Main footer content */}
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <div className="grid md:grid-cols-3 gap-10">
@@ -49,12 +53,12 @@ export function Footer() {
                 <div className="font-display font-semibold text-white text-lg leading-tight">
                   {profile.name}
                 </div>
-                <div className="text-xs text-white/60">
+                <div className="text-xs text-white/80">
                   {profile.qualification}
                 </div>
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-white/65 mb-6 font-body">
+            <p className="text-sm leading-relaxed text-white/85 mb-6 font-body">
               Providing gentle, effective homeopathic care.
             </p>
             {/* Social links */}
@@ -67,7 +71,7 @@ export function Footer() {
                 className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors hover:bg-white/20"
                 style={{ background: "oklch(1 0 0 / 0.1)" }}
               >
-                <Instagram className="w-4 h-4 text-white/80" />
+                <Instagram className="w-4 h-4 text-white/90" />
               </a>
               <a
                 href="https://facebook.com"
@@ -77,7 +81,7 @@ export function Footer() {
                 className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors hover:bg-white/20"
                 style={{ background: "oklch(1 0 0 / 0.1)" }}
               >
-                <Facebook className="w-4 h-4 text-white/80" />
+                <Facebook className="w-4 h-4 text-white/90" />
               </a>
             </div>
           </div>
@@ -93,7 +97,7 @@ export function Footer() {
                   <button
                     type="button"
                     onClick={() => handleNavClick(href)}
-                    className="text-sm text-white/65 hover:text-white transition-colors font-body"
+                    className="text-sm text-white/85 hover:text-white transition-colors font-body"
                   >
                     {label}
                   </button>
@@ -110,7 +114,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex gap-3 items-start">
                 <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <span className="text-sm text-white/65 font-body whitespace-pre-line">
+                <span className="text-sm text-white/85 font-body whitespace-pre-line">
                   {profile.address}
                 </span>
               </li>
@@ -118,7 +122,7 @@ export function Footer() {
                 <Phone className="w-4 h-4 text-gold shrink-0" />
                 <a
                   href={`tel:${profile.phone.replace(/\s+/g, "")}`}
-                  className="text-sm text-white/65 hover:text-white transition-colors font-body"
+                  className="text-sm text-white/85 hover:text-white transition-colors font-body"
                 >
                   {profile.phone}
                 </a>
@@ -127,7 +131,7 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-gold shrink-0" />
                 <a
                   href={`mailto:${profile.email}`}
-                  className="text-sm text-white/65 hover:text-white transition-colors font-body break-all"
+                  className="text-sm text-white/85 hover:text-white transition-colors font-body break-all"
                 >
                   {profile.email}
                 </a>
@@ -140,32 +144,33 @@ export function Footer() {
       {/* Bottom bar */}
       <div
         className="border-t py-5"
-        style={{ borderColor: "oklch(1 0 0 / 0.1)" }}
+        style={{ borderColor: "oklch(1 0 0 / 0.15)" }}
       >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-white/50 font-body">
+          <p className="text-xs text-white/70 font-body">
             © 2026 Dr. Sheeba Homeopathy Clinic. All rights reserved.
           </p>
-          <p className="text-xs text-white/50 font-body flex items-center gap-1.5">
+          <p className="text-xs text-white/70 font-body flex items-center gap-1.5">
             Built with <Heart className="w-3 h-3 text-gold fill-gold" /> using{" "}
             <a
               href="https://caffeine.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white/80 underline underline-offset-2 transition-colors"
+              className="hover:text-white underline underline-offset-2 transition-colors"
             >
               caffeine.ai
             </a>
           </p>
         </div>
-        {/* Hidden admin link */}
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 flex justify-end mt-1">
+        {/* Admin link - clearly visible */}
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 flex justify-end mt-3">
           <button
             type="button"
             onClick={handleAdminAccess}
-            className="text-xs text-white/20 hover:text-white/60 transition-colors font-body cursor-pointer"
+            className="flex items-center gap-1.5 text-xs text-white/70 hover:text-white transition-colors font-body cursor-pointer border border-white/30 hover:border-white/60 px-3 py-1.5 rounded-md"
             aria-label="Admin access"
           >
+            <Lock className="w-3 h-3" />
             Admin
           </button>
         </div>

@@ -34,20 +34,20 @@ export default function App() {
 
   if (isAdmin) {
     return (
-      <>
+      <DoctorProvider>
         <Toaster richColors position="top-right" />
         <AdminPanel />
-      </>
+      </DoctorProvider>
     );
   }
 
   return (
     <DoctorProvider>
-      <div className="min-h-screen font-body bg-background">
+      <div className="flex flex-col min-h-screen font-body bg-background">
         <Toaster richColors position="top-right" />
         <Navbar />
 
-        <main>
+        <main className="flex-1">
           <HeroSection
             onBookAppointment={() => scrollToSection("#appointment")}
             onLearnMore={() => scrollToSection("#about")}

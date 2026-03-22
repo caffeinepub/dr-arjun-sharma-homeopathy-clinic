@@ -18,7 +18,7 @@ export function HeroSection({
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center"
     >
       {/* Background image with overlay */}
       <div
@@ -39,7 +39,7 @@ export function HeroSection({
         aria-hidden="true"
       />
 
-      {/* Decorative circles */}
+      {/* Decorative circle */}
       <div
         className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-10"
         style={{
@@ -50,17 +50,40 @@ export function HeroSection({
       />
 
       {/* Content */}
-      <div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16">
+      <div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-20">
         <div className="flex flex-col md:flex-row items-center gap-10">
           {/* Left: Text */}
           <div className="flex-1 max-w-xl">
+            {/* Eyebrow */}
+            <p
+              className="text-sm font-semibold uppercase tracking-widest mb-4 animate-fade-in-up"
+              style={{ color: "oklch(0.75 0.13 85)" }}
+            >
+              Expert Homeopathic Care in Dwarka, Delhi
+            </p>
+
+            {/* Doctor name & clinic headline */}
+            <h1 className="font-heading text-5xl sm:text-6xl font-bold leading-tight text-white mb-2 animate-fade-in-up delay-100">
+              Dr. Sheeba
+            </h1>
+            <h2 className="font-heading text-2xl sm:text-3xl font-medium text-white/80 mb-2 animate-fade-in-up delay-200">
+              Homeopathy Clinic
+            </h2>
+            <p className="text-white/70 text-base mb-2 animate-fade-in-up delay-200">
+              Bachelor of Homoeopathic Medicine and Surgery — JPR
+            </p>
+            <p className="text-white/65 text-base mb-10 animate-fade-in-up delay-200">
+              Providing gentle, effective homeopathic care.
+            </p>
+
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 mb-16 animate-fade-in-up delay-300">
+            <div className="flex flex-wrap gap-4 mb-10 animate-fade-in-up delay-300">
               <Button
                 size="lg"
                 onClick={onBookAppointment}
-                className="bg-gold hover:bg-gold-light text-white font-semibold px-8 py-6 text-base shadow-hero transition-all duration-300 hover:shadow-hero hover:-translate-y-0.5"
+                className="bg-gold hover:bg-gold-light font-semibold px-8 py-6 text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5"
                 style={{ color: "oklch(0.15 0.05 40)" }}
+                data-ocid="hero.primary_button"
               >
                 Book Appointment
               </Button>
@@ -70,13 +93,14 @@ export function HeroSection({
                 onClick={onLearnMore}
                 className="border-white/40 text-white hover:bg-white/15 px-8 py-6 text-base transition-all duration-300"
                 style={{ background: "oklch(1 0 0 / 0.08)" }}
+                data-ocid="hero.secondary_button"
               >
                 Learn More
               </Button>
             </div>
 
             {/* Trust Badges */}
-            <div className="flex flex-wrap gap-4 sm:gap-8 animate-fade-in-up delay-400">
+            <div className="flex flex-wrap gap-4 sm:gap-6 animate-fade-in-up delay-400">
               {trustBadges.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
@@ -87,7 +111,7 @@ export function HeroSection({
                   }}
                 >
                   <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                     style={{ background: "oklch(0.75 0.13 85 / 0.3)" }}
                   >
                     <Icon className="w-4 h-4 text-gold" />
@@ -100,7 +124,7 @@ export function HeroSection({
             </div>
           </div>
 
-          {/* Right: Doctor Photo - semi-transparent */}
+          {/* Right: Doctor Photo — semi-transparent */}
           <div className="flex-shrink-0 w-72 md:w-96 hidden md:block">
             <img
               src="https://i.ibb.co/jZrc1VbJ/Doctor-Photo.png"
