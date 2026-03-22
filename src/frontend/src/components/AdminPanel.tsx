@@ -39,15 +39,16 @@ import { toast } from "sonner";
 
 const DEFAULT_PROFILE: DoctorProfile = {
   name: "Dr. Sheeba",
-  qualification: "BHMS, Surgery",
-  bio: "Dedicated to providing gentle, effective homeopathic treatment for acute and chronic conditions. Dr. Sheeba believes in treating the whole person — mind, body, and spirit — rather than just symptoms.",
+  qualification:
+    "BHMS, Cosmeto Dermatologist, Counsellor (Mental Health Ailments), Nutritionist, Weight Loss Specialist",
+  bio: "Dedicated to providing gentle, effective homeopathic treatment for acute and chronic conditions.",
   address: "Flat C-502, Rajasthan Apartment\nSector 4, Dwarka, Delhi — 110078",
   phone: "+91 92893 71243",
-  email: "dr.sheeba@homeopathy.com",
-  clinicHours: "Mon–Sat: 9:00 AM – 7:00 PM\nSunday: 10:00 AM – 1:00 PM",
+  email: "Thomassheeba28@gmail.com",
+  clinicHours: "Mon–Sat: 11:00 AM – 8:00 PM (By Appointment)\nSunday: Closed",
 };
 
-// ─── Login Screen ────────────────────────────────────────────────────────────
+// ─── Login Screen ─────────────────────────────────────────────────
 
 function LoginScreen({ onLogin }: { onLogin: (token: SessionToken) => void }) {
   const [password, setPassword] = useState("");
@@ -137,7 +138,7 @@ function LoginScreen({ onLogin }: { onLogin: (token: SessionToken) => void }) {
   );
 }
 
-// ─── Profile Editor ──────────────────────────────────────────────────────────
+// ─── Profile Editor ───────────────────────────────────────────────
 
 function ProfileEditor({ token }: { token: SessionToken }) {
   const [profile, setProfile] = useState<DoctorProfile>(DEFAULT_PROFILE);
@@ -201,7 +202,7 @@ function ProfileEditor({ token }: { token: SessionToken }) {
             id="prof-qual"
             value={profile.qualification}
             onChange={handleChange("qualification")}
-            placeholder="BHMS, Surgery"
+            placeholder="BHMS"
             required
           />
         </div>
@@ -252,7 +253,7 @@ function ProfileEditor({ token }: { token: SessionToken }) {
             type="email"
             value={profile.email}
             onChange={handleChange("email")}
-            placeholder="dr.sheeba@homeopathy.com"
+            placeholder="Thomassheeba28@gmail.com"
             required
           />
         </div>
@@ -266,7 +267,7 @@ function ProfileEditor({ token }: { token: SessionToken }) {
           onChange={handleChange("clinicHours")}
           rows={2}
           className="resize-none"
-          placeholder="Mon–Sat: 9:00 AM – 7:00 PM..."
+          placeholder="Mon–Sat: 11:00 AM – 8:00 PM..."
           required
         />
       </div>
@@ -292,7 +293,7 @@ function ProfileEditor({ token }: { token: SessionToken }) {
   );
 }
 
-// ─── Services Manager ────────────────────────────────────────────────────────
+// ─── Services Manager ────────────────────────────────────────────────
 
 interface EditingService {
   id: bigint | null; // null = new
@@ -530,7 +531,7 @@ function ServicesManager({ token }: { token: SessionToken }) {
   );
 }
 
-// ─── Messages Viewer ─────────────────────────────────────────────────────────
+// ─── Messages Viewer ───────────────────────────────────────────────
 
 function MessagesViewer({ token }: { token: SessionToken }) {
   const [messages, setMessages] = useState<ContactMessage[]>([]);
@@ -593,7 +594,7 @@ function MessagesViewer({ token }: { token: SessionToken }) {
   );
 }
 
-// ─── Dashboard ───────────────────────────────────────────────────────────────
+// ─── Dashboard ────────────────────────────────────────────────────────────
 
 function Dashboard({
   token,
@@ -746,7 +747,7 @@ function Dashboard({
   );
 }
 
-// ─── Main AdminPanel ──────────────────────────────────────────────────────────
+// ─── Main AdminPanel ──────────────────────────────────────────────────
 
 export function AdminPanel() {
   const [token, setToken] = useState<SessionToken | null>(null);

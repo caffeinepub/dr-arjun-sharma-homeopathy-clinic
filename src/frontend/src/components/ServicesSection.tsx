@@ -1,55 +1,53 @@
 import { Badge } from "@/components/ui/badge";
 import { useDoctorContext } from "@/context/DoctorContext";
 import {
+  Brain,
   Droplets,
   Leaf,
-  Scale,
+  Salad,
   Scissors,
   Sparkles,
   Wind,
-  Zap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import type React from "react";
 
 const SERVICE_ICONS: LucideIcon[] = [
-  Zap,
-  Scale,
   Sparkles,
   Droplets,
   Wind,
   Leaf,
   Scissors,
+  Sparkles,
+  Brain,
+  Salad,
+  Sparkles,
 ];
 const SERVICE_COLORS = [
-  "oklch(0.65 0.09 145)",
-  "oklch(0.72 0.12 80)",
   "oklch(0.6 0.08 200)",
   "oklch(0.62 0.1 30)",
   "oklch(0.58 0.11 155)",
   "oklch(0.6 0.13 168)",
   "oklch(0.65 0.11 120)",
+  "oklch(0.60 0.10 260)",
+  "oklch(0.55 0.12 300)",
+  "oklch(0.68 0.11 95)",
+  "oklch(0.62 0.09 50)",
 ];
 
-const FALLBACK_SERVICES = [
+const FALLBACK_SERVICES: {
+  title: string;
+  description: string | React.ReactNode;
+}[] = [
   {
-    title: "Laser Treatment",
-    description:
-      "Advanced laser therapy for skin rejuvenation, scar reduction, pigmentation, and other cosmetic concerns.",
-  },
-  {
-    title: "Weight Loss Diet Counseling",
-    description:
-      "Personalized diet plans and counseling to help you achieve and maintain a healthy weight effectively.",
-  },
-  {
-    title: "Skin Disease Treatment",
+    title: "Skin Disease",
     description:
       "Effective treatment for eczema, psoriasis, acne, urticaria, and other acute and chronic skin conditions.",
   },
   {
-    title: "Liver Disease Treatment",
+    title: "Liver Disease",
     description:
-      "Holistic homeopathic care for liver disorders including fatty liver, hepatitis support, and liver function improvement.",
+      "Holistic homeopathic care for liver conditions such as fatty liver, hepatitis A & B, and other liver disorders.",
   },
   {
     title: "Allergic Treatment",
@@ -57,14 +55,44 @@ const FALLBACK_SERVICES = [
       "Targeted treatment for all types of allergies — dust, food, seasonal, and skin allergies with long-lasting relief.",
   },
   {
-    title: "Hair Loss Treatment",
-    description:
-      "Effective homeopathic remedies for hair fall, alopecia, thinning hair, and promoting healthy hair regrowth.",
+    title: "Hair Treatment",
+    description: (
+      <>
+        <p>
+          <strong>Hair Loss Treatments:</strong> Management of alopecia,
+          including alopecia areata, with specialized hair care and targeted
+          therapies to improve hair volume and growth.
+        </p>
+        <p>
+          <strong>Dandruff &amp; Scalp Care:</strong> Treatments for dandruff
+          and scalp conditions such as seborrheic dermatitis.
+        </p>
+        <p>
+          <strong>Mesotherapy:</strong> A treatment designed to regenerate
+          inactive or damaged hair follicles and promote hair growth.
+        </p>
+      </>
+    ),
   },
   {
-    title: "Dandruff Treatment",
+    title: "Cosmeto Dermatologist",
     description:
-      "Treating scalp conditions including dandruff, seborrheic dermatitis, and dry/oily scalp issues naturally.",
+      "Expert cosmetic dermatology services for skin health, anti-aging, pigmentation, and cosmetic skin treatments.",
+  },
+  {
+    title: "Counsellor (Mental Health Ailments)",
+    description:
+      "Compassionate counselling and homeopathic support for anxiety, depression, stress, and other mental health concerns.",
+  },
+  {
+    title: "Nutritionist",
+    description:
+      "Comprehensive nutrition guidance and personalised meal planning to support overall health and wellness goals.",
+  },
+  {
+    title: "Weight Loss Specialist (BHMS)",
+    description:
+      "Specialised BHMS-based weight management programs combining homeopathy, dietary advice, and lifestyle corrections.",
   },
 ];
 
@@ -98,6 +126,9 @@ export function ServicesSection() {
             Dr. Sheeba provides personalized homeopathic treatment across a wide
             range of acute and chronic conditions, tailored to each patient's
             unique constitution.
+          </p>
+          <p className="text-forest font-semibold max-w-xl mx-auto text-base font-body mt-3">
+            To enumerate a few treatments
           </p>
         </div>
 
@@ -158,9 +189,15 @@ export function ServicesSection() {
                   <h3 className="font-display text-xl font-semibold text-forest mb-2 leading-tight">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground font-body leading-relaxed">
-                    {service.description}
-                  </p>
+                  {typeof service.description === "string" ? (
+                    <p className="text-sm text-muted-foreground font-body leading-relaxed">
+                      {service.description}
+                    </p>
+                  ) : (
+                    <div className="text-sm text-muted-foreground font-body leading-relaxed space-y-1">
+                      {service.description}
+                    </div>
+                  )}
 
                   {/* Bottom accent line */}
                   <div
@@ -175,6 +212,11 @@ export function ServicesSection() {
             })}
           </div>
         )}
+        {/* Closing statement */}
+        <p className="text-center text-forest font-semibold font-body mt-10 text-base">
+          We provide comprehensive diagnostic care and treatment for all
+          conditions, from head to toe. Give us the opportunity to serve you.
+        </p>
       </div>
     </section>
   );

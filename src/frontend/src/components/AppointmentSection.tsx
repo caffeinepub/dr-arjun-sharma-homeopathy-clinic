@@ -115,12 +115,11 @@ export function AppointmentSection() {
             </h2>
             <p className="text-muted-foreground font-body leading-relaxed mb-8">
               Schedule your consultation with Dr. Sheeba. We offer flexible
-              timing slots to fit your schedule. Appointments are confirmed
-              within 24 hours.
+              timing slots to fit your schedule.
             </p>
 
             {/* Clinic hours */}
-            <div className="p-6 rounded-2xl border border-border bg-white shadow-xs">
+            <div className="p-6 rounded-2xl border border-border bg-white shadow-xs mb-4">
               <div className="flex items-center gap-2.5 mb-4">
                 <CalendarDays className="w-5 h-5 text-forest" />
                 <span className="font-semibold text-forest text-sm uppercase tracking-wide">
@@ -139,11 +138,43 @@ export function AppointmentSection() {
                 <div className="flex justify-between gap-4">
                   <span className="text-muted-foreground">Sunday</span>
                   <span className="font-medium text-foreground text-right">
-                    Pre-Appointments Only
+                    Closed
                   </span>
                 </div>
               </div>
             </div>
+
+            {/* WhatsApp / Booking number */}
+            <a
+              href="https://wa.me/919289371243"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-4 rounded-2xl border border-green-200 bg-green-50 hover:bg-green-100 transition-colors"
+            >
+              <svg
+                role="img"
+                aria-label="WhatsApp"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+                className="w-8 h-8 flex-shrink-0"
+                fill="none"
+              >
+                <title>WhatsApp</title>
+                <circle cx="16" cy="16" r="16" fill="#25D366" />
+                <path
+                  d="M23.5 20.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.4-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.3-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.1 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.2-.2-.5-.3z"
+                  fill="white"
+                />
+              </svg>
+              <div>
+                <p className="text-xs text-green-700 font-medium uppercase tracking-wide">
+                  WhatsApp / Book via Call
+                </p>
+                <p className="text-lg font-bold text-green-800">
+                  +91 92893 71243
+                </p>
+              </div>
+            </a>
           </div>
 
           {/* Form */}

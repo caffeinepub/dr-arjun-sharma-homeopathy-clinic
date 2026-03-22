@@ -55,8 +55,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-sm leading-relaxed text-white/65 mb-6 font-body">
-              Providing gentle, effective homeopathic care for families across
-              Dwarka and Delhi with {profile.name}'s trusted expertise.
+              Providing gentle, effective homeopathic care.
             </p>
             {/* Social links */}
             <div className="flex gap-3">

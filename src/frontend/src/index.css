@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Forest green primary palette */
+    --background: 0.97 0.008 158;
+    --foreground: 0.18 0.05 158;
+
+    --card: 0.99 0.004 158;
+    --card-foreground: 0.18 0.05 158;
+
+    --popover: 0.99 0.004 158;
+    --popover-foreground: 0.18 0.05 158;
+
+    --primary: 0.32 0.09 158;
+    --primary-foreground: 0.98 0.005 158;
+
+    --secondary: 0.93 0.02 158;
+    --secondary-foreground: 0.25 0.07 158;
+
+    --muted: 0.93 0.015 158;
+    --muted-foreground: 0.52 0.04 158;
+
+    --accent: 0.88 0.04 85;
+    --accent-foreground: 0.18 0.06 85;
+
+    --destructive: 0.55 0.22 27;
+    --destructive-foreground: 0.98 0.005 27;
+
+    --border: 0.88 0.025 158;
+    --input: 0.88 0.025 158;
+    --ring: 0.32 0.09 158;
+
+    --radius: 0.75rem;
+
+    --chart-1: 0.32 0.09 158;
+    --chart-2: 0.75 0.13 85;
+    --chart-3: 0.55 0.12 210;
+    --chart-4: 0.65 0.15 30;
+    --chart-5: 0.5 0.1 300;
+
+    --sidebar: 0.97 0.008 158;
+    --sidebar-foreground: 0.18 0.05 158;
+    --sidebar-primary: 0.32 0.09 158;
+    --sidebar-primary-foreground: 0.98 0.005 158;
+    --sidebar-accent: 0.93 0.02 158;
+    --sidebar-accent-foreground: 0.25 0.07 158;
+    --sidebar-border: 0.88 0.025 158;
+    --sidebar-ring: 0.32 0.09 158;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: oklch(0.75 0.13 85);
+  }
+  .bg-gold {
+    background-color: oklch(0.72 0.13 85);
+  }
+  .bg-gold-light {
+    background-color: oklch(0.78 0.13 85);
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out both;
+  }
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

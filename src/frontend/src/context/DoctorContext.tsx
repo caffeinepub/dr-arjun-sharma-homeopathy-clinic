@@ -11,13 +11,13 @@ import {
 
 const DEFAULT_PROFILE: DoctorProfile = {
   name: "Dr. Sheeba",
-  qualification: "BHMS, Surgery",
-  bio: "Dedicated to providing gentle, effective homeopathic treatment for acute and chronic conditions. Dr. Sheeba believes in treating the whole person — mind, body, and spirit — rather than just symptoms.",
+  qualification:
+    "BHMS, Cosmeto Dermatologist, Counsellor (Mental Health Ailments), Nutritionist, Weight Loss Specialist",
+  bio: "Dedicated to providing gentle, effective homeopathic treatment for acute and chronic conditions.",
   address: "Flat C-502, Rajasthan Apartment\nSector 4, Dwarka, Delhi — 110078",
   phone: "+91 92893 71243",
-  email: "dr.sheeba@homeopathy.com",
-  clinicHours:
-    "Mon–Sat: 11:00 AM – 8:00 PM (By Appointment)\nSunday: Pre-Appointments Only",
+  email: "Thomassheeba28@gmail.com",
+  clinicHours: "Mon–Sat: 11:00 AM – 8:00 PM (By Appointment)\nSunday: Closed",
 };
 
 interface DoctorContextValue {
