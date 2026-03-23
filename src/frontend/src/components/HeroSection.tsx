@@ -69,11 +69,8 @@ export function HeroSection({
             <h2 className="font-heading text-2xl sm:text-3xl font-medium text-white/80 mb-2 animate-fade-in-up delay-200">
               Homeopathy Clinic
             </h2>
-            <p className="text-white/70 text-base mb-2 animate-fade-in-up delay-200">
+            <p className="text-white/70 text-base mb-10 animate-fade-in-up delay-200">
               Bachelor of Homoeopathic Medicine and Surgery — JPR
-            </p>
-            <p className="text-white/65 text-base mb-10 animate-fade-in-up delay-200">
-              Providing gentle, effective homeopathic care.
             </p>
 
             {/* CTA Buttons */}

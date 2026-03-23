@@ -58,9 +58,6 @@ export function Footer() {
                 </div>
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-white/85 mb-6 font-body">
-              Providing gentle, effective homeopathic care.
-            </p>
             {/* Social links */}
             <div className="flex gap-3">
               <a
